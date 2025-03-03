@@ -1,2 +1,2 @@
 # clone-tabnews
-Clone do projero TabNews
+Clone do projeto TabNews
