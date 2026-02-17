@@ -8,8 +8,10 @@ async function status(request, response) {
   const maxConnectionsValue = Number(maxConnectionsResult.rows[0].max_connections)
   
   const openedConnectionsResult = await database.query(
-    "SELECT count(*) FROM pg_catalog.pg_stat_activity WHERE state = 'active' AND datname = $1", [process.env.POSTGRES_DB]
+    "SELECT count(*) FROM pg_catalog.pg_stat_activity WHERE datname = $1", 
+    [process.env.POSTGRES_DB]
   )
+  
   const openedConnectionsValue = Number(openedConnectionsResult.rows[0].count)
 
   response.status(200).json({
