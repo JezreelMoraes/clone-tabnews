@@ -6,7 +6,8 @@ async function query(query, params) {
     user: process.env.POSTGRES_USER,
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
-    port: process.env.POSTGRES_PORT
+    port: process.env.POSTGRES_PORT,
+    ssl: true
   })
 
   try {
