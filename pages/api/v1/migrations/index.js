@@ -3,6 +3,8 @@ import migrationRunner from "node-pg-migrate";
 import { join } from "node:path";
 
 export default async function migration(request, response) {
+  console.log("um log");
+
   const dbClient = await database.getNewClient();
 
   const migrationConfig = {
