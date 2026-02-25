@@ -1,10 +1,14 @@
 import database from "infra/database";
+import orchestrator from "tests/orchestrator.js";
 
 async function clearDatabase() {
   await database.query("DROP SCHEMA public cascade; CREATE SCHEMA public;");
 }
 
-beforeAll(clearDatabase);
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
+  await clearDatabase();
+});
 
 test("POST to /api/v1/migrations should return 200", async () => {
   const first_response = await fetch(
